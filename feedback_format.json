@@ -1,0 +1,86 @@
+
+{
+  "feedback_records": [
+    {
+      "feedback_id": "ab7db57f-b1e7-4d31-be46-b6afcb4609d3",
+      "episode_id": "EP_001",
+      "situation_id": "SIT_001",
+      "user_id": "USER_001",
+      "timestamp": "2026-11-26T18:29:55.389155+00:00",
+
+      "entities_involved": [
+        "PERSON_001"
+      ],
+
+      "decision_context": {
+        "signals_used": [],
+        "episodic_memories_used": [
+          "EP_045"
+        ]
+      },
+
+      "recommendations": [
+        {
+          "rank": 1,
+          "action_id": "ACT_001",
+          "action_type": "send_message",
+          "description": "Send Rahul a reassuring message",
+          "reason": "The user has previously preferred reassuring Rahul during meetings.",
+          "selected": false
+        },
+        {
+          "rank": 2,
+          "action_id": "ACT_002",
+          "action_type": "silence_call",
+          "description": "Silence the incoming call",
+          "reason": "The user is likely occupied.",
+          "selected": true
+        },
+        {
+          "rank": 3,
+          "action_id": "ACT_003",
+          "action_type": "send_watch_notification",
+          "description": "Notify the user on their watch",
+          "reason": "This informs the user without interrupting the meeting.",
+          "selected": false
+        }
+      ],
+
+      "selected_action": {
+        "rank": 2,
+        "action_id": "ACT_002",
+        "action_type": "silence_call",
+        "assigned_rung": 2
+      },
+
+      "executed_action": {
+        "action_id": "ACT_002",
+        "action_type": "silence_call",
+        "parameters": {
+          "call_id": "CALL_001"
+        },
+        "execution_status": "success",
+        "execution_message": "Mock execution completed"
+      },
+
+      "interaction_signals": {
+        "interaction_initiated_by": "other_person",
+        "response_time_minutes": null,
+        "interaction_completed": true
+      },
+
+      "evaluation": {
+        "emotional_valence": "positive",
+        "user_feedback_score": 4,
+        "feedback_comment": null
+      },
+
+      "learning_metadata": {
+        "active_action": true,
+        "supporting_value_ids": [],
+        "contradicting_value_ids": [],
+        "evidence_processed": false
+      }
+    }
+  ]
+}

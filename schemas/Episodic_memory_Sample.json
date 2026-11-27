@@ -1,0 +1,88 @@
+{
+  "_id": "EP_DEMO_014",
+  "user_id": "USER_DEMO_014",
+  "situation_id": "SIT_014",
+  "feedback_id": "FB_DEMO_014",
+  "timestamp": "2026-11-28T09:12:00+05:30",
+  "entities_involved": ["PERSON_DEMO_014"],
+  "context_summary": {
+    "situation_type": "schedule",
+    "situation_subtype": "calendar_reminder",
+    "user_activity": "preparing_for_meeting",
+    "stress_level": "low",
+    "trigger_summary": "A project check-in is scheduled to begin shortly"
+  },
+  "decision_context": {
+    "signals_used": ["calendar"],
+    "episodic_memories_used": []
+  },
+  "decision_and_outcome": {
+    "recommendations": [
+      {
+        "rank": 1,
+        "action_id": "ACT_DEMO_014_A",
+        "action_type": "show_meeting_brief",
+        "description": "Show a brief summary before the meeting",
+        "preference_score": 0.91,
+        "reason": "A short preview can help the user prepare without interrupting.",
+        "selected": true
+      },
+      {
+        "rank": 2,
+        "action_id": "ACT_DEMO_014_B",
+        "action_type": "dismiss_reminder",
+        "description": "Dismiss the reminder",
+        "preference_score": 0.35,
+        "reason": "The user may still need a prompt before the scheduled start.",
+        "selected": false
+      },
+      {
+        "rank": 3,
+        "action_id": "ACT_DEMO_014_C",
+        "action_type": "snooze_reminder",
+        "description": "Snooze the reminder",
+        "preference_score": 0.2,
+        "reason": "No delay was requested.",
+        "selected": false
+      }
+    ],
+    "top_predicted_action": {
+      "action_id": "ACT_DEMO_014_A",
+      "action_type": "show_meeting_brief",
+      "preference_score": 0.91
+    },
+    "selected_action": {
+      "rank": 1,
+      "action_id": "ACT_DEMO_014_A",
+      "action_type": "show_meeting_brief",
+      "assigned_rung": 1,
+      "selection_source": "system"
+    },
+    "execution": {
+      "parameters": {
+        "event_id": "CAL_014"
+      },
+      "status": "success",
+      "message": "A short meeting brief was displayed"
+    },
+    "evaluation": {
+      "top_1_matched": true,
+      "selected_rank": 1,
+      "user_feedback_score": 5,
+      "user_comment": null,
+      "emotional_valence": "positive"
+    }
+  },
+  "follow_up": {
+    "required": false,
+    "suggested_action": null,
+    "deadline": null,
+    "status": "not_required",
+    "completed_at": null
+  },
+  "memory_impact": {
+    "updated_collections": ["value_memory"],
+    "learning_note": "The user approved a concise preparation brief before a scheduled check-in."
+  },
+  "tags": ["calendar_reminder", "meeting_prep", "top_rank_selected"]
+}

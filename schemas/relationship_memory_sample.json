@@ -1,0 +1,129 @@
+{
+  "_id": "REL_USER_DEMO_014_PERSON_DEMO_014",
+  "user_id": "USER_DEMO_014",
+  "person_id": "PERSON_DEMO_014",
+  "identity": {
+    "name": "Alex",
+    "aliases": ["Alex"],
+    "role": "project_colleague",
+    "contact_identifiers": [
+      {
+        "platform": "calendar",
+        "value": "PERSON_DEMO_014"
+      }
+    ]
+  },
+  "scores": {
+    "closeness": {
+      "value": 0.55,
+      "source": "inferred",
+      "confidence": 0.72,
+      "updated_at": "2026-11-28T09:12:00+05:30",
+      "evidence_ids": ["EP_DEMO_014"]
+    },
+    "trust": {
+      "value": 0.7,
+      "source": "inferred",
+      "confidence": 0.75,
+      "updated_at": "2026-11-28T09:12:00+05:30",
+      "evidence_ids": ["EP_DEMO_014"]
+    },
+    "importance": {
+      "value": 0.8,
+      "source": "inferred",
+      "confidence": 0.8,
+      "updated_at": "2026-11-28T09:12:00+05:30",
+      "evidence_ids": ["EP_DEMO_014"]
+    }
+  },
+  "tie_state": {
+    "current_status": "active_positive",
+    "recent_tension": false,
+    "relationship_trend": "stable",
+    "support_balance": "mutual",
+    "interaction_reciprocity": 0.7,
+    "last_interaction_at": "2026-11-28T09:12:00+05:30",
+    "source": "inferred",
+    "confidence": 0.72,
+    "evidence_ids": ["EP_DEMO_014"]
+  },
+  "interaction_stats": {
+    "total_interactions": 18,
+    "calls_count": 1,
+    "messages_count": 9,
+    "meetings_count": 8,
+    "average_interactions_per_week": 2.0,
+    "average_response_time_minutes": 35,
+    "user_initiation_ratio": 0.45,
+    "other_person_initiation_ratio": 0.55,
+    "calculation_period_days": 60,
+    "updated_at": "2026-11-28T09:12:00+05:30"
+  },
+  "communication_preferences": {
+    "preferred_channels": ["calendar", "message"],
+    "preferred_contact_times": ["morning", "afternoon"],
+    "source": "inferred",
+    "confidence": 0.72,
+    "evidence_ids": ["EP_DEMO_014"]
+  },
+  "behavioral_patterns": {
+    "user_behavior": [
+      {
+        "pattern": "reviews_agenda_before_project_meetings",
+        "frequency": "occasional",
+        "confidence": 0.75,
+        "source": "inferred",
+        "evidence_ids": ["EP_DEMO_014"]
+      }
+    ],
+    "other_person_behavior": [
+      {
+        "pattern": "attends_scheduled_project_check_ins",
+        "frequency": "frequent",
+        "confidence": 0.8,
+        "source": "inferred",
+        "evidence_ids": ["EP_DEMO_014"]
+      }
+    ],
+    "observed_since": "2026-09-01",
+    "updated_at": "2026-11-28T09:12:00+05:30"
+  },
+  "relationship_boundaries": {
+    "known_boundaries": [],
+    "sensitive_topics": [],
+    "interaction_restrictions": [],
+    "source": "inferred",
+    "confidence": 0.5,
+    "evidence_ids": []
+  },
+  "shared_context": {
+    "known_connections": ["Project team"],
+    "shared_activities": ["Project check-ins"],
+    "common_interests": [],
+    "significant_shared_events": [
+      {
+        "event_id": "EP_DEMO_014",
+        "event_type": "scheduled_meeting",
+        "description": "Prepared for a project check-in",
+        "impact_on_relationship": "neutral",
+        "timestamp": "2026-11-28T09:10:00+05:30"
+      }
+    ]
+  },
+  "score_history": [
+    {
+      "metric": "importance",
+      "old_value": 0.75,
+      "new_value": 0.8,
+      "reason": "Regular participation in shared project work",
+      "evidence_ids": ["EP_DEMO_014"],
+      "timestamp": "2026-11-28T09:12:00+05:30"
+    }
+  ],
+  "metadata": {
+    "created_at": "2026-09-01T10:00:00+05:30",
+    "updated_at": "2026-11-28T09:12:00+05:30",
+    "last_verified_at": "2026-11-28T09:12:00+05:30",
+    "schema_version": "2.0"
+  }
+}

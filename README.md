@@ -26,8 +26,8 @@ An explicit `response.user_feedback_score` takes precedence. If omitted, `rating
 
 ```bash
 python3 feedback_mechanism.py \
-  --feedback feedback.json \
-  --memory persona_memory.json \
+  --feedback examples/feedback.json \
+  --memory examples/persona_memory.json \
   --output merged_persona_memory.json
 ```
 

@@ -1,0 +1,95 @@
+{
+  "episodic_memory": [
+    {
+      "_id": "EP_DEMO_014",
+      "user_id": "USER_DEMO_014",
+      "entities_involved": [
+        "PERSON_DEMO_014"
+      ],
+      "decision_and_outcome": {
+        "selected_action": {
+          "action_type": "show_meeting_brief"
+        },
+        "evaluation": {
+          "emotional_valence": "positive",
+          "user_feedback_score": 5
+        }
+      }
+    }
+  ],
+  "relationship_memory": [
+    {
+      "_id": "REL_USER_DEMO_014_PERSON_DEMO_014",
+      "user_id": "USER_DEMO_014",
+      "person_id": "PERSON_DEMO_014",
+      "identity": {
+        "name": "Alex",
+        "role": "project_colleague"
+      },
+      "scores": {
+        "closeness": {
+          "value": 0.55,
+          "source": "inferred"
+        },
+        "trust": {
+          "value": 0.70,
+          "source": "inferred"
+        },
+        "importance": {
+          "value": 0.80,
+          "source": "inferred"
+        }
+      },
+      "tie_state": {
+        "recent_tension": false,
+        "interaction_reciprocity": 0.7,
+        "source": "inferred"
+      },
+      "interaction_stats": {
+        "total_interactions": 18,
+        "average_interactions_per_week": 2.0,
+        "average_response_time_minutes": 35,
+        "user_initiation_ratio": 0.45,
+        "other_person_initiation_ratio": 0.55,
+        "calculation_period_days": 60
+      },
+      "score_history": []
+    }
+  ],
+  "value_model": [
+    {
+      "_id": "VAL_DEMO_014",
+      "user_id": "USER_DEMO_014",
+      "category": "soft_value",
+      "value_name": "Preparing Before Scheduled Meetings",
+      "statement": "The user prefers a concise preparation summary shortly before a scheduled project meeting.",
+      "behavioral_preference": {
+        "preferred_action": "Show a concise meeting summary",
+        "tone_guidance": "concise",
+        "avoid_actions": []
+      },
+      "priority_weight": 0.82,
+      "conditions": {
+        "applies_to_roles": [
+          "project_colleague"
+        ],
+        "trigger": "upcoming_project_meeting"
+      },
+      "exceptions": [],
+      "provenance": {
+        "source": "inferred",
+        "confidence": 0.78,
+        "supporting_episodes": [
+          "EP_DEMO_014"
+        ],
+        "contradicting_episodes": []
+      },
+      "validation": {
+        "status": "provisional",
+        "needs_user_confirmation": true,
+        "contradiction_count": 0
+      },
+      "active": true
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "feedback_id": "FB_EXAMPLE_001",
+  "user_id": "USER_DEMO_014",
+  "snapshot_id": "SIT_014",
+  "ts": 1795000000,
+  "context": {
+    "situation_type": "schedule",
+    "situation_subtype": "calendar_reminder",
+    "trigger_summary": "A project check-in is scheduled to begin shortly"
+  },
+  "executed": {
+    "action_type": "show_meeting_brief",
+    "channel": "calendar",
+    "tone": "concise",
+    "timing": "before_meeting"
+  },
+  "response": {
+    "outcome": "accepted",
+    "user_action": "show_meeting_brief",
+    "user_feedback_score": 5
+  },
+  "prediction": {
+    "top": "show_meeting_brief",
+    "confidence": 0.91
+  },
+  "counterpart": "PERSON_DEMO_014",
+  "stakes": "low"
+}

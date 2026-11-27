@@ -35,18 +35,42 @@ The memory bundle must contain arrays for `episodic_memory`, `relationship_memor
 
 ## HTTP API
 
-Install dependencies and start the API:
+The HTTP API uses MongoDB as its persistence layer. It loads the user's three
+memory collections, merges feedback, and upserts the resulting documents.
+MongoDB's internal `_id` is user-scoped so records from different users cannot
+overwrite one another; the persona document IDs are preserved when returned by
+the API. If the user's database is empty, the optional `persona_memory` request
+field can seed it once.
+
+Start a local MongoDB server, then install dependencies and start the API:
 
 ```bash
+docker run --name persona-memory-mongo -p 27017:27017 -d mongo:8
 python3 -m pip install -r requirements.txt
+export MONGODB_URI="mongodb://localhost:27017"
+export MONGODB_DATABASE="persona_memory"
 python3 -m uvicorn api:app --host 127.0.0.1 --port 8000
 ```
 
-Send `POST /feedback/merge` with:
+Send `POST /feedback/merge` with the feedback. Optionally include a starting
+memory bundle when the user's database has no records yet:
 
 ```json
 {
-  "feedback": {},
+  "feedback": {
+    "feedback_id": "FB_EXAMPLE_001",
+    "user_id": "USER_DEMO_014",
+    "snapshot_id": "SIT_014",
+    "ts": 1795000000,
+    "executed": {
+      "action_type": "show_meeting_brief",
+      "channel": "calendar"
+    },
+    "response": {
+      "outcome": "accepted",
+      "user_feedback_score": 5
+    }
+  },
   "persona_memory": {
     "episodic_memory": [],
     "relationship_memory": [],
@@ -55,7 +79,9 @@ Send `POST /feedback/merge` with:
 }
 ```
 
-The FastAPI `/docs` interface exposes the complete contract. `/health` reports API readiness.
+`GET /health` checks the MongoDB connection. The FastAPI `/docs` interface
+exposes the complete feedback contract. The local JSON CLI remains available
+for one-off file-based merges and does not write to MongoDB.
 
 ## Tests
 
@@ -63,4 +89,6 @@ The FastAPI `/docs` interface exposes the complete contract. `/health` reports A
 python3 -m unittest discover -s tests
 ```
 
-The tests cover idempotency, schema preservation, hard-rule preservation, relationship/value updates, conflicting evidence, feedback-score validation, and the HTTP endpoint.
+The tests cover idempotency, schema preservation, hard-rule preservation,
+relationship/value updates, conflicting evidence, feedback-score validation,
+and the MongoDB-backed HTTP endpoint.

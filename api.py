@@ -1,11 +1,14 @@
-"""FastAPI endpoint for merging Action Block feedback into Persona Memory."""
+"""FastAPI endpoint for merging Action Block feedback into MongoDB Persona Memory."""
 
+from functools import lru_cache
 from typing import Any, Literal
 
 from fastapi import FastAPI, HTTPException
+from pymongo.errors import PyMongoError
 from pydantic import BaseModel, Field
 
 from feedback_mechanism import merge_feedback
+from mongo_store import COLLECTIONS, MongoPersonaMemoryStore
 
 
 class ExecutedAction(BaseModel):
@@ -44,23 +47,40 @@ class Feedback(BaseModel):
 
 class MergeRequest(BaseModel):
     feedback: Feedback
-    persona_memory: dict[str, Any]
+    persona_memory: dict[str, Any] | None = None
 
 
 app = FastAPI(title="Persona Memory Feedback Merger", version="1.0.0")
 
 
+@lru_cache
+def get_memory_store() -> MongoPersonaMemoryStore:
+    return MongoPersonaMemoryStore()
+
+
 @app.get("/health")
 def health() -> dict[str, str]:
-    return {"status": "ok"}
+    try:
+        get_memory_store().ping()
+    except PyMongoError as error:
+        raise HTTPException(status_code=503, detail="MongoDB is unavailable") from error
+    return {"status": "ok", "database": "connected"}
 
 
 @app.post("/feedback/merge")
 def merge(request: MergeRequest) -> dict[str, Any]:
     try:
-        return merge_feedback(
-            request.feedback.model_dump(exclude_none=True),
-            request.persona_memory,
-        )
+        feedback = request.feedback.model_dump(exclude_none=True)
+        store = get_memory_store()
+        persona_memory = store.load(feedback["user_id"])
+        if not any(persona_memory.values()) and request.persona_memory is not None:
+            persona_memory = request.persona_memory
+        for collection in COLLECTIONS:
+            persona_memory.setdefault(collection, [])
+        merged = merge_feedback(feedback, persona_memory)
+        store.save(merged)
+        return merged
     except ValueError as error:
         raise HTTPException(status_code=422, detail=str(error)) from error
+    except PyMongoError as error:
+        raise HTTPException(status_code=503, detail="MongoDB operation failed") from error

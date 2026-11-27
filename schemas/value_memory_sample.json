@@ -1,0 +1,37 @@
+{
+  "_id": "VAL_DEMO_014",
+  "user_id": "USER_DEMO_014",
+  "value_name": "Preparing Before Scheduled Meetings",
+  "category": "soft_rule",
+  "domain": "productivity",
+  "statement": "The user prefers a concise preparation summary shortly before a scheduled project meeting.",
+  "behavioral_preference": {
+    "preferred_action": "Show a brief meeting summary before the scheduled start",
+    "avoid_actions": [
+      "Showing a long summary that interrupts preparation",
+      "Dismissing a reminder without user direction"
+    ],
+    "tone_guidance": "concise, calm, practical"
+  },
+  "priority_weight": 0.82,
+  "conditions": {
+    "applies_to_roles": ["project_colleague"],
+    "min_closeness": 0.4,
+    "trigger": "upcoming_project_meeting"
+  },
+  "exceptions": ["user_is_driving", "user_is_in_another_meeting"],
+  "provenance": {
+    "source": "inferred",
+    "confidence": 0.78,
+    "created_at": "2026-11-28T09:12:00+05:30",
+    "last_validated_at": "2026-11-28T09:12:00+05:30",
+    "supporting_episodes": ["EP_DEMO_014"],
+    "contradicting_episodes": []
+  },
+  "validation": {
+    "status": "provisional",
+    "needs_user_confirmation": true,
+    "contradiction_count": 0
+  },
+  "active": true
+}
